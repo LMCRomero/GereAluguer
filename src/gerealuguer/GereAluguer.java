@@ -37,16 +37,21 @@ public class GereAluguer {
         m = "56-KE-60"; c = 25.7F; a.novoVeiculo(m, c);
         m = "75-TR-78"; c = 15.7F; a.novoVeiculo(m, c);
         m = "78-TL-85"; c = 16.7F; a.novoVeiculo(m, c);
+        m = "87-TL-58"; c = 16.7F; a.novoVeiculo(m, c);
         a.listVeiculos();
 
         a.alugaVeiculo("12-FG-34", 180112);
         a.alugaVeiculo("56-KE-60", 180113);
         a.alugaVeiculo("12-FG-34", 180112);
         a.listVeiculosLivres();
+        a.alugaVeiculo("78-TL-85", 180115);
+
         p = a.recebeVeiculo("12-FG-34", 180114);
         System.out.println("Preço = " + p);
         a.listVeiculos();
         p = a.recebeVeiculo("56-KE-60", 180122);
+        System.out.println("Preço = " + p);
+        p = a.recebeVeiculo("78-TL-85", 180222);
         System.out.println("Preço = " + p);
     }
     
