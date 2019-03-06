@@ -23,6 +23,14 @@ public class Armazem {
     }
     
     /**
+     * Construtor - Cria o array de veículos com uma dimensão máxima de veículos 
+     * que o armazém pode conter por defeito. Esta dimensão é de 10 veículos.
+     */
+    public Armazem(){
+        this(10);
+    }
+
+    /**
      * Método para obter um veículo através da sua matrícula
      * @param m matricula do veículo
      * @return Rereferencia do objecto encontrado ou null se não encontrado
