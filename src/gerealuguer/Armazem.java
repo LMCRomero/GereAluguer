@@ -23,7 +23,7 @@ public class Armazem {
     }
     
     /**
-     * Método para obter o objeto através da sua matrícula
+     * Método para obter um veículo através da sua matrícula
      * @param m matricula do veículo
      * @return Rereferencia do objecto encontrado ou null se não encontrado
      */
