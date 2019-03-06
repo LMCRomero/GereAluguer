@@ -53,7 +53,7 @@ public class Armazem {
     }
     
     /**
-     * Aluga uma veículo existente no armazém
+     * Aluga um veículo existente no armazém
      * @param m Matricula do veículo
      * @param dataOut Data do inicio do aluguer
      */
