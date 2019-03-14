@@ -3,14 +3,16 @@
  */
 package gerealuguer;
 
+import java.util.*;
+
 /**
  * Classe Aramazém - serve para gerir veículos de aluguer
  * Contém um array de veículos com a dimensão correspondente ao nº máximo de veículos
  * @author Romero
  */ 
 public class Armazem {
-    private Veiculo[] veiculos;
-    private int noVeiculos;
+    private List<Veiculo> veiculos;
+    private int maxVeiculos;
     
     /**
      * Construtor - Cria o array de veículos com a dimensão máxima de veículos 
@@ -18,24 +20,31 @@ public class Armazem {
      * @param maxV No máximo de veículos no armazém
      */
     public Armazem(int maxV){
-        veiculos = new Veiculo[maxV];
-        noVeiculos = 0;
+        veiculos = new ArrayList<>();
+        maxVeiculos = maxV;
     }
     
+    /**
+     * Construtor - Cria o array de veículos com uma dimensão máxima de veículos 
+     * que o armazém pode conter por defeito. Esta dimensão é de 10 veículos.
+     */
+    public Armazem(){
+        this(10);
+    }
+
     /**
      * Método para obter um veículo através da sua matrícula
      * @param m matricula do veículo
      * @return Rereferencia do objecto encontrado ou null se não encontrado
      */
     public Veiculo getVeiculo(String m){
-        Veiculo v = null;
         String mt;
-        for(int i=0;i<noVeiculos && v == null; i++){
-            mt = veiculos[i].getMatricula();
+        for(Veiculo v: veiculos){
+            mt = v.getMatricula();
             if(mt.compareTo(m) == 0) 
-                v = veiculos[i];
+                return v;
         }
-        return v;
+        return null;
     }
     
     /**
@@ -44,10 +53,10 @@ public class Armazem {
      * @param c Custo diário do aluguer do veículo
      */
     public void novoVeiculo(String m, float c){
-        if(noVeiculos<veiculos.length) {
+        if(maxVeiculos>veiculos.size()) {
             if(m.length() == 8 && getVeiculo(m)==null) {
-                veiculos[noVeiculos] = new Veiculo(m,c);
-                noVeiculos++;                
+                veiculos.add(new Veiculo(m,c));
+                maxVeiculos++;                
             }
         }
     }
@@ -84,8 +93,8 @@ public class Armazem {
      */
     public int noVeiculosAlugados(){
         int ct = 0;
-        for(int i=0;i<noVeiculos;i++){
-            if(veiculos[i].getAlugado())
+        for(Veiculo v:veiculos){
+            if(v.getAlugado())
                 ct++;
         }
         return ct;
@@ -96,8 +105,8 @@ public class Armazem {
      */
     public void listVeiculos(){
         System.out.println("Veiculos -------------------------");
-        for(int i=0; i<noVeiculos;i++){
-            System.out.println(veiculos[i]); 
+        for(Veiculo v:veiculos){
+            System.out.println(v); 
         }
         System.out.println("----------------------------------");
     }
@@ -107,9 +116,9 @@ public class Armazem {
      */
     public void listVeiculosLivres(){
         System.out.println("Veiculos Livres -------------------");
-        for(int i=0; i<noVeiculos;i++){
-            if(!veiculos[i].getAlugado())
-                System.out.println(veiculos[i].getMatricula()); 
+        for(Veiculo v:veiculos){
+            if(!v.getAlugado())
+                System.out.println(v.getMatricula()); 
         }
         System.out.println("-----------------------------------");
     }
