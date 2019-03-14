@@ -12,7 +12,7 @@ import java.util.*;
  */ 
 public class Armazem {
     private Set<Veiculo> veiculos;
-    private int maxVeiculos;
+    private final int maxVeiculos;
     
     /**
      * Construtor - Cria o array de veículos com a dimensão máxima de veículos 
@@ -53,10 +53,9 @@ public class Armazem {
      * @param c Custo diário do aluguer do veículo
      */
     public void novoVeiculo(String m, float c){
-        if(maxVeiculos>veiculos.size()) {
+        if(maxVeiculos>=veiculos.size()) {
             if(m.length() == 8 && getVeiculo(m)==null) {
                 veiculos.add(new Veiculo(m,c));
-                maxVeiculos++;                
             }
         }
     }
@@ -66,7 +65,7 @@ public class Armazem {
      * @param v O novo vículo
      */
     public void novoVeiculo(Veiculo v){
-        if(maxVeiculos>veiculos.size()) {
+        if(maxVeiculos>=veiculos.size()) {
             if(!veiculos.contains(v))
                 veiculos.add(v);
         }
