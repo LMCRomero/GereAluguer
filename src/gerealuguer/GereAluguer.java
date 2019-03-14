@@ -12,6 +12,7 @@ package gerealuguer;
  * 
  * Apenas contém o método main.
  * Testa algumas características do sistema como aluguer, receção, e outros.
+ * Novos veiculos devem ser criados antes de serem inseridos no armazém.
  * </p>
  * <b>Note:</b> Comentar devidamente o código torna-o mais amigável e faz com que seja de alta qualidade.
  * 
