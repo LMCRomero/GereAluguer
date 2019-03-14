@@ -11,7 +11,7 @@ import java.util.*;
  * @author Romero
  */ 
 public class Armazem {
-    private Set<Veiculo> veiculos;
+    private List<Veiculo> veiculos;
     private int maxVeiculos;
     
     /**
@@ -20,7 +20,7 @@ public class Armazem {
      * @param maxV No máximo de veículos no armazém
      */
     public Armazem(int maxV){
-        veiculos = new HashSet<>();
+        veiculos = new ArrayList<>();
         maxVeiculos = maxV;
     }
     
@@ -58,17 +58,6 @@ public class Armazem {
                 veiculos.add(new Veiculo(m,c));
                 maxVeiculos++;                
             }
-        }
-    }
-    
-    /**
-     * Insere um novo veículo no armazém
-     * @param v O novo vículo
-     */
-    public void novoVeiculo(Veiculo v){
-        if(maxVeiculos>veiculos.size()) {
-            if(!veiculos.contains(v))
-                veiculos.add(v);
         }
     }
     

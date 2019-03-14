@@ -32,19 +32,12 @@ public class GereAluguer {
         float c = 23.5F;
         float p=0F;
         
-//        m = "12-FG-34"; c = 23.5F; a.novoVeiculo(m, c);
-//        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(m, c);
-//        m = "56-KE-60"; c = 25.7F; a.novoVeiculo(m, c);
-//        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(m, c);
-//        m = "78-TL-85"; c = 16.7F; a.novoVeiculo(m, c);
-//        m = "87-TL-58"; c = 16.7F; a.novoVeiculo(m, c);
-
-        m = "12-FG-34"; c = 23.5F; a.novoVeiculo(new Veiculo(m,c));
-        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(new Veiculo(m,c));
-        m = "56-KE-60"; c = 25.7F; a.novoVeiculo(new Veiculo(m,c));
-        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(new Veiculo(m,c));
-        m = "78-TL-85"; c = 16.7F; a.novoVeiculo(new Veiculo(m,c));
-        m = "87-TL-58"; c = 16.7F; a.novoVeiculo(new Veiculo(m,c));
+        a.novoVeiculo(m, c);
+        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(m, c);
+        m = "56-KE-60"; c = 25.7F; a.novoVeiculo(m, c);
+        m = "75-TR-78"; c = 15.7F; a.novoVeiculo(m, c);
+        m = "78-TL-85"; c = 16.7F; a.novoVeiculo(m, c);
+        m = "87-TL-58"; c = 16.7F; a.novoVeiculo(m, c);
         a.listVeiculos();
 
         a.alugaVeiculo("12-FG-34", 180112);
