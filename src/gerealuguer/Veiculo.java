@@ -3,6 +3,8 @@
  */
 package gerealuguer;
 
+import java.util.Objects;
+
 /**
  * Classe veiculo define um veículo e gere o seu aluguer
  * @author Romero
@@ -107,4 +109,33 @@ public class Veiculo {
     public String toString(){
         return matricula + " - Estado:" + (alugado?"Alugado":"Livre");
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.matricula);
+        hash = 53 * hash + Float.floatToIntBits(this.custoDia);
+        hash = 53 * hash + (this.alugado ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Veiculo other = (Veiculo) obj;
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
