@@ -71,6 +71,12 @@ public class Armazem {
         }
     }
     
+    public void removeVeiculo(String m){
+        Veiculo v = getVeiculo(m);
+        if(v != null && veiculos.contains(v))
+            veiculos.remove(v);
+    }
+    
     /**
      * Aluga um veículo existente no armazém
      * @param m Matricula do veículo
