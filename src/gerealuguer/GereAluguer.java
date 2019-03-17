@@ -37,7 +37,7 @@ public class GereAluguer {
     }
 
     public void gravarArmazem() {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("objs.dat"))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("armazem.dat"))) {
             out.writeObject(armazem);
         } catch(IOException e){
             System.out.println("Erro ao gravar armazém!");            
@@ -46,7 +46,7 @@ public class GereAluguer {
     
     public void lerArmazem() throws Exception {
         ObjectInputStream in = 
-                new ObjectInputStream(new FileInputStream("objs.dat"));
+                new ObjectInputStream(new FileInputStream("armazem.dat"));
         armazem = (Armazem) in.readObject();
     }
     

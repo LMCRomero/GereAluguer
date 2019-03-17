@@ -121,11 +121,11 @@ public class Armazem implements Serializable {
      * Lista todos o veículos existentes no armazém
      */
     public void listVeiculos(){
-        System.out.println("Veiculos -------------------------");
+        System.out.println("Veiculos --------------------------");
         for(Veiculo v:veiculos){
             System.out.println(v); 
         }
-        System.out.println("----------------------------------");
+        System.out.println("-----------------------------------");
     }
 
     /**
@@ -135,7 +135,7 @@ public class Armazem implements Serializable {
         System.out.println("Veiculos Livres -------------------");
         for(Veiculo v:veiculos){
             if(!v.getAlugado())
-                System.out.println(v.getMatricula()); 
+                System.out.println(v); 
         }
         System.out.println("-----------------------------------");
     }
@@ -144,10 +144,10 @@ public class Armazem implements Serializable {
      * Lista todos os veículos alugados do armazém
      */
     public void listVeiculosAlugados(){
-        System.out.println("Veiculos Livres -------------------");
+        System.out.println("Veiculos Alugados -----------------");
         for(Veiculo v:veiculos){
             if(v.getAlugado())
-                System.out.println(v.getMatricula()); 
+                System.out.println(v); 
         }
         System.out.println("-----------------------------------");
     }

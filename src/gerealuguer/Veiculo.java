@@ -108,7 +108,7 @@ public class Veiculo implements Serializable {
     
     @Override
     public String toString(){
-        return matricula + " - Estado:" + (alugado?"Alugado":"Livre");
+        return matricula + " - Estado:" + (alugado?"Alugado" + "(" + dataSaida + ")":"Livre");
     }
 
     @Override
