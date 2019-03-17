@@ -3,13 +3,14 @@
  */
 package gerealuguer;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Classe veiculo define um veículo e gere o seu aluguer
  * @author Romero
  */
-public class Veiculo {
+public class Veiculo implements Serializable {
     private String matricula;
     private float custoDia;
     private boolean alugado;

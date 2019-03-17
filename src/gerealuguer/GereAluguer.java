@@ -6,6 +6,9 @@
 package gerealuguer;
 
 import comum.Le;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
 * <h2>Gestão de Aluguer de Viaturas.</h2>
@@ -25,9 +28,28 @@ public class GereAluguer {
     Armazem armazem;
     
     public GereAluguer(){
-        armazem = new Armazem(10);        
+        try {
+            lerArmazem();
+        } catch(Exception e){
+           System.out.println("Erro ao ler armazém!");            
+            armazem = new Armazem();        
+        }
     }
 
+    public void gravarArmazem() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("objs.dat"))) {
+            out.writeObject(armazem);
+        } catch(IOException e){
+            System.out.println("Erro ao gravar armazém!");            
+        }
+    }
+    
+    public void lerArmazem() throws Exception {
+        ObjectInputStream in = 
+                new ObjectInputStream(new FileInputStream("objs.dat"));
+        armazem = (Armazem) in.readObject();
+    }
+    
     public Armazem getArmazem() {
         return armazem;
     }
@@ -131,6 +153,7 @@ public class GereAluguer {
                     break;
             }            
         } while(op!=0);
+        gravarArmazem();
     }
     
 }

@@ -3,6 +3,7 @@
  */
 package gerealuguer;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -10,7 +11,7 @@ import java.util.*;
  * Contém um array de veículos com a dimensão correspondente ao nº máximo de veículos
  * @author Romero
  */ 
-public class Armazem {
+public class Armazem implements Serializable {
     private Set<Veiculo> veiculos;
     private final int maxVeiculos;
     
