@@ -3,6 +3,7 @@
  */
 package gerealuguer;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -10,7 +11,7 @@ import java.util.*;
  * Contém um array de veículos com a dimensão correspondente ao nº máximo de veículos
  * @author Romero
  */ 
-public class Armazem {
+public class Armazem implements Serializable {
     private Set<Veiculo> veiculos;
     private final int maxVeiculos;
     
@@ -120,11 +121,11 @@ public class Armazem {
      * Lista todos o veículos existentes no armazém
      */
     public void listVeiculos(){
-        System.out.println("Veiculos -------------------------");
+        System.out.println("Veiculos --------------------------");
         for(Veiculo v:veiculos){
             System.out.println(v); 
         }
-        System.out.println("----------------------------------");
+        System.out.println("-----------------------------------");
     }
 
     /**
@@ -134,7 +135,7 @@ public class Armazem {
         System.out.println("Veiculos Livres -------------------");
         for(Veiculo v:veiculos){
             if(!v.getAlugado())
-                System.out.println(v.getMatricula()); 
+                System.out.println(v); 
         }
         System.out.println("-----------------------------------");
     }
@@ -143,10 +144,10 @@ public class Armazem {
      * Lista todos os veículos alugados do armazém
      */
     public void listVeiculosAlugados(){
-        System.out.println("Veiculos Livres -------------------");
+        System.out.println("Veiculos Alugados -----------------");
         for(Veiculo v:veiculos){
             if(v.getAlugado())
-                System.out.println(v.getMatricula()); 
+                System.out.println(v); 
         }
         System.out.println("-----------------------------------");
     }

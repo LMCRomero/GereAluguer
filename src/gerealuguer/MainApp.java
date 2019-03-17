@@ -5,6 +5,8 @@
  */
 package gerealuguer;
 
+import java.io.*;
+
 /**
  *
  * @author LuisRomero
@@ -42,7 +44,7 @@ public class MainApp {
     public static void main(String[] args) {
         GereAluguer ga = new GereAluguer();
         
-        iniciaEstado(ga);
+        //iniciaEstado(ga);
         ga.menu_Principal();
     }
 }
