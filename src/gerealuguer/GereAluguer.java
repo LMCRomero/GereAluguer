@@ -9,12 +9,10 @@ import comum.Le;
 
 /**
 * <h2>Gestão de Aluguer de Viaturas.</h2>
- * Classe de teste do sistema. 
+ * Classe de Menus do sistema. 
  * <p>
  * 
- * Apenas contém o método main.
- * Testa algumas características do sistema como aluguer, receção, e outros.
- * Novos veiculos devem ser criados antes de serem inseridos no armazém.
+ * Contém gestão de menus da aplicação.
  * </p>
  * <b>Note:</b> Comentar devidamente o código torna-o mais amigável e faz com que seja de alta qualidade.
  * 
@@ -80,8 +78,19 @@ public class GereAluguer {
         int dOut;
         armazem.listVeiculosLivres();
         System.out.print("Matricula (CC-CC-CC): "); m = Le.umaString();
-        System.out.print("Preço por dia: "); dOut = Le.umInt();
+        System.out.print("Dia inicial: "); dOut = Le.umInt();
         armazem.alugaVeiculo(m, dOut);
+    }
+    
+    private void devolveVeiculo(){
+        String m;
+        int dIn;
+        float p;
+        armazem.listVeiculosAlugados();
+        System.out.print("Matricula (CC-CC-CC): "); m = Le.umaString();
+        System.out.print("Dia final: "); dIn = Le.umInt();
+        p = armazem.recebeVeiculo(m, dIn);
+        System.out.println("Custo do aluguer: " + p); 
     }
     
     public void menu_Alugueres(){
@@ -97,6 +106,7 @@ public class GereAluguer {
                     alugaVeiculo();
                     break;
                 case 2: 
+                    devolveVeiculo();
                     break;
             }            
         }while (op!=0);

@@ -24,10 +24,10 @@ public class MainApp {
         m = "78-TL-85"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));
         m = "87-TL-58"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));
 
-        armazem.alugaVeiculo("12-FG-34", 180112);
-        armazem.alugaVeiculo("56-KE-60", 180113);
-        armazem.alugaVeiculo("12-FG-34", 180112);
-        armazem.alugaVeiculo("78-TL-85", 180115);
+//        armazem.alugaVeiculo("12-FG-34", 180112);
+//        armazem.alugaVeiculo("56-KE-60", 180113);
+//        armazem.alugaVeiculo("12-FG-34", 180112);
+//        armazem.alugaVeiculo("78-TL-85", 180115);
 
 //        p = armazem.recebeVeiculo("12-FG-34", 180114);
 //        p = armazem.recebeVeiculo("56-KE-60", 180122);

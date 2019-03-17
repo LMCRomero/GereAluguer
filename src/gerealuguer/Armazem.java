@@ -138,4 +138,16 @@ public class Armazem {
         }
         System.out.println("-----------------------------------");
     }
+
+    /**
+     * Lista todos os veículos alugados do armazém
+     */
+    public void listVeiculosAlugados(){
+        System.out.println("Veiculos Livres -------------------");
+        for(Veiculo v:veiculos){
+            if(v.getAlugado())
+                System.out.println(v.getMatricula()); 
+        }
+        System.out.println("-----------------------------------");
+    }
 }
