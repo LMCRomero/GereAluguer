@@ -12,9 +12,10 @@ import java.io.*;
 * <h2>Gestão de Aluguer de Viaturas.</h2>
  * Classe de Menus do sistema. 
  * <p>
- * 
- * Contém gestão de menus da aplicação.
- * </p>
+ * Contém gestão de operações da aplicação.
+ * <p>
+ * Operações são feitas através de menus
+ * <p>
  * <b>Note:</b> Comentar devidamente o código torna-o mais amigável e faz com que seja de alta qualidade.
  * 
  * @author LuisRomero
