@@ -7,8 +7,6 @@ package gerealuguer;
 
 import comum.Le;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
 * <h2>Gestão de Aluguer de Viaturas.</h2>
