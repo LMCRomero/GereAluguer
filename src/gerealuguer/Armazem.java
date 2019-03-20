@@ -76,16 +76,25 @@ public class Armazem implements Serializable {
         }
     }
     
-    public void removeVeiculo(String m){
+    /**
+     * Remove um veículo do armazém
+     * @param m Matricula do veículo
+     * @throws MatriculaInexistenteException Matricula não existe.
+     */
+    public void removeVeiculo(String m) throws MatriculaInexistenteException {
         Veiculo v = getVeiculo(m);
         if(v != null && veiculos.contains(v))
             veiculos.remove(v);
+        else
+            throw new MatriculaInexistenteException(m);
     }
     
     /**
      * Aluga um veículo existente no armazém
      * @param m Matricula do veículo
      * @param dataOut Data do inicio do aluguer
+     * @throws VeiculoAlugadoException Veículo está alugado e indisponível.
+     * @throws MatriculaInexistenteException Matricula não existe.
      */
     public void alugaVeiculo(String m, int dataOut) throws VeiculoAlugadoException, MatriculaInexistenteException {
         Veiculo v = getVeiculo(m);
