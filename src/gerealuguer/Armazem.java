@@ -53,6 +53,7 @@ public class Armazem implements Serializable {
      * Insere um novo veículo no armazém
      * @param m Matricula do novo vículo
      * @param c Custo diário do aluguer do veículo
+     * @throws MatriculaExistenteException Matricula já existe.
      */
     public void novoVeiculo(String m, float c) throws MatriculaExistenteException {
         if(maxVeiculos>=veiculos.size()) {
@@ -66,6 +67,7 @@ public class Armazem implements Serializable {
     /**
      * Insere um novo veículo no armazém
      * @param v O novo vículo
+     * @throws MatriculaExistenteException Matricula já existe.
      */
     public void novoVeiculo(Veiculo v){
         if(maxVeiculos>=veiculos.size()) {

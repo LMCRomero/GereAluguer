@@ -62,7 +62,7 @@ public class GereAluguer {
     
     /**
      *
-     * @return
+     * @return O repositório do armazém
      */
     public Armazem getArmazem() {
         return armazem;
@@ -165,7 +165,9 @@ public class GereAluguer {
     }
     
     /**
-     *
+     * Menu principal da aplicação.
+     * <p>
+     * Define o único ponto de partida da aplicação. 
      */
     public void menu_Principal(){
         int op;

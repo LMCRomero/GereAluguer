@@ -10,6 +10,7 @@ import java.util.*;
 
 /**
  * Classe veiculo define um veículo e gere o seu aluguer
+ * 
  * @author Romero
  */
 public class Veiculo implements Serializable {
