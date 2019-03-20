@@ -153,7 +153,8 @@ public class Veiculo implements Serializable {
         Date dOut = new GregorianCalendar(2000+aO, mO, dO).getTime();
         long diff = dIn.getTime() - dOut.getTime(  );
         dias = (int)(diff / (1000*60*60*24));
-        System.out.println("dias = " + dias);
+        //System.out.println("dias = " + dias);
+        
         return dias;
     }
     
