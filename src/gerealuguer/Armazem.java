@@ -100,6 +100,9 @@ public class Armazem implements Serializable {
      * @param m Matricula do veículo
      * @param dataIn Data de entrada do veículo alugado
      * @return Custo do aluguer
+     * @throws VeiculoNaoAlugadoException O veiculo não está alugado
+     * @throws DataInvalidaException A data de devolução é inválida
+     * @throws MatriculaInexistenteException A matricula nã existe.
      */
     public float recebeVeiculo(String m, int dataIn) throws VeiculoNaoAlugadoException, DataInvalidaException, MatriculaInexistenteException {
         Veiculo v = getVeiculo(m);
