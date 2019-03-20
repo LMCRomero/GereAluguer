@@ -6,6 +6,7 @@
 package gerealuguer;
 
 import comum.Le;
+import erros.*;
 import java.io.*;
 
 /**
@@ -100,7 +101,11 @@ public class GereAluguer {
         armazem.listVeiculosLivres();
         System.out.print("Matricula (CC-CC-CC): "); m = Le.umaString();
         System.out.print("Dia inicial: "); dOut = Le.umInt();
-        armazem.alugaVeiculo(m, dOut);
+        try {
+        armazem.alugaVeiculo(m, dOut);            
+        } catch(VeiculoAlugadoException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     private void devolveVeiculo(){
@@ -110,8 +115,14 @@ public class GereAluguer {
         armazem.listVeiculosAlugados();
         System.out.print("Matricula (CC-CC-CC): "); m = Le.umaString();
         System.out.print("Dia final: "); dIn = Le.umInt();
-        p = armazem.recebeVeiculo(m, dIn);
-        System.out.println("Custo do aluguer: " + p); 
+        try{
+            p = armazem.recebeVeiculo(m, dIn);
+            System.out.println("Custo do aluguer: " + p); 
+        } catch(VeiculoNaoAlugadoException e){
+            System.out.println(e.getMessage());            
+        } catch(DataInvalidaException e){
+            System.out.println(e.getMessage());  
+        }
     }
     
     public void menu_Alugueres(){

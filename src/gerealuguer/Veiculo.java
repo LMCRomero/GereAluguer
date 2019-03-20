@@ -3,8 +3,10 @@
  */
 package gerealuguer;
 
-import java.io.Serializable;
-import java.util.Objects;
+import erros.*;
+import java.io.*;
+import java.text.*;
+import java.util.*;
 
 /**
  * Classe veiculo define um veículo e gere o seu aluguer
@@ -48,18 +50,19 @@ public class Veiculo implements Serializable {
      * Aluga o veículo estabelecendo a data de inicio do aluguer
      * @param dataOut Data de inicio do aluguer
      * @return true em caso de sucesso e false caso esteja alugado
+     * @throws VeiculoAlugadoException
      */
-    public boolean aluga(int dataOut) {
+    public boolean aluga(int dataOut) throws VeiculoAlugadoException {
         boolean sucesso = false;
         if(!alugado) {
             alugado = true;
             dataSaida = dataOut;
             dataEntrada = noDias = 0;
-            System.out.println(matricula + " Foi Alugado");
             sucesso = true;
         }
         else
-            System.out.println(matricula + " Está Alugado");
+            throw new VeiculoAlugadoException(matricula);
+        
         return sucesso;
     }
     
@@ -69,21 +72,21 @@ public class Veiculo implements Serializable {
      * @return true em caso de sucesso e 
      *         false caso não esteja alugado ou data inválida
      */
-    public boolean devolve(int dataIn) {
+    public boolean devolve(int dataIn) throws VeiculoNaoAlugadoException, DataInvalidaException {
         boolean sucesso = false;
         if(alugado) {
             if(dataIn > dataSaida) {
                 alugado = false;
                 dataEntrada = dataIn;
-                noDias = dataEntrada - dataSaida;
-                System.out.println(matricula + " foi devolvido. " + 
-                        noDias + " dias alugado.");
+                noDias = calculaDias(dataEntrada, dataSaida);
+//                System.out.println(matricula + " foi devolvido. " + 
+//                        noDias + " dias alugado.");
                 sucesso = true;
             } else {
-                System.out.println("Data de entrada inválida para " + matricula);
+                throw new DataInvalidaException(""+dataIn);
             }
         } else {
-            System.out.println(matricula + " não estava alugado.");
+            throw new VeiculoNaoAlugadoException(matricula);
         }
         return sucesso;
     }
@@ -108,7 +111,7 @@ public class Veiculo implements Serializable {
     
     @Override
     public String toString(){
-        return matricula + " - Estado:" + (alugado?"Alugado" + "(" + dataSaida + ")":"Livre");
+        return matricula + " - Estado:" + (alugado?"Alugado" + "(" + dataSaida + ")":"Livre") + " Custo(" + custoDia + ")";
     }
 
     @Override
@@ -132,10 +135,26 @@ public class Veiculo implements Serializable {
             return false;
         }
         final Veiculo other = (Veiculo) obj;
-        if (!Objects.equals(this.matricula, other.matricula)) {
-            return false;
-        }
-        return true;
+        return this.matricula.equals(other.matricula);
+    }
+
+    private int calculaDias(int dataEntra, int dataSai) {
+        int dias, aI, aO, mI, mO, dI, dO;
+        String anoIn, anoOut, mesIn, mesOut, diaIn, diaOut;
+        
+        anoIn = Integer.toString(dataEntra).substring(0, 2); aI = Integer.parseInt(anoIn);
+        anoOut = Integer.toString(dataSai).substring(0, 2); aO = Integer.parseInt(anoOut);
+        mesIn = Integer.toString(dataEntra).substring(2, 4); mI = Integer.parseInt(mesIn);
+        mesOut = Integer.toString(dataSai).substring(2, 4); mO = Integer.parseInt(mesOut);
+        diaIn = Integer.toString(dataEntra).substring(4); dI = Integer.parseInt(diaIn);
+        diaOut = Integer.toString(dataSai).substring(4); dO = Integer.parseInt(diaOut);
+
+        Date dIn = new GregorianCalendar(2000+aI, mI, dI).getTime();
+        Date dOut = new GregorianCalendar(2000+aO, mO, dO).getTime();
+        long diff = dIn.getTime() - dOut.getTime(  );
+        dias = (int)(diff / (1000*60*60*24));
+        System.out.println("dias = " + dias);
+        return dias;
     }
     
     

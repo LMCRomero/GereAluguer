@@ -3,6 +3,7 @@
  */
 package gerealuguer;
 
+import erros.*;
 import java.io.Serializable;
 import java.util.*;
 
@@ -53,11 +54,12 @@ public class Armazem implements Serializable {
      * @param m Matricula do novo vículo
      * @param c Custo diário do aluguer do veículo
      */
-    public void novoVeiculo(String m, float c){
+    public void novoVeiculo(String m, float c) throws MatriculaExistenteException {
         if(maxVeiculos>=veiculos.size()) {
             if(m.length() == 8 && getVeiculo(m)==null) {
                 veiculos.add(new Veiculo(m,c));
-            }
+            } else
+                throw new MatriculaExistenteException(m);
         }
     }
     
@@ -69,6 +71,8 @@ public class Armazem implements Serializable {
         if(maxVeiculos>=veiculos.size()) {
             if(!veiculos.contains(v))
                 veiculos.add(v);
+            else 
+                throw new MatriculaExistenteException(v.getMatricula());
         }
     }
     
@@ -83,10 +87,12 @@ public class Armazem implements Serializable {
      * @param m Matricula do veículo
      * @param dataOut Data do inicio do aluguer
      */
-    public void alugaVeiculo(String m, int dataOut) {
+    public void alugaVeiculo(String m, int dataOut) throws VeiculoAlugadoException, MatriculaInexistenteException {
         Veiculo v = getVeiculo(m);
         if(v!=null)
             v.aluga(dataOut);
+        else
+            throw new MatriculaInexistenteException(m);
     }
     
     /**
@@ -95,12 +101,14 @@ public class Armazem implements Serializable {
      * @param dataIn Data de entrada do veículo alugado
      * @return Custo do aluguer
      */
-    public float recebeVeiculo(String m, int dataIn){
+    public float recebeVeiculo(String m, int dataIn) throws VeiculoNaoAlugadoException, DataInvalidaException, MatriculaInexistenteException {
         Veiculo v = getVeiculo(m);
         if(v!=null) {
             if(v.devolve(dataIn))
                 return v.custo();
         }
+        else
+            throw new MatriculaInexistenteException(m);
         return 0F;
     }
     
