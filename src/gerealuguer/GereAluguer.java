@@ -27,6 +27,9 @@ public class GereAluguer {
     
     Armazem armazem;
     
+    /**
+     *
+     */
     public GereAluguer(){
         try {
             lerArmazem();
@@ -36,7 +39,10 @@ public class GereAluguer {
         }
     }
 
-    public void gravarArmazem() {
+    /**
+     *
+     */
+    private void gravarArmazem() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("armazem.dat"))) {
             out.writeObject(armazem);
         } catch(IOException e){
@@ -44,12 +50,20 @@ public class GereAluguer {
         }
     }
     
-    public void lerArmazem() throws Exception {
+    /**
+     *
+     * @throws Exception
+     */
+    private void lerArmazem() throws Exception {
         ObjectInputStream in = 
                 new ObjectInputStream(new FileInputStream("armazem.dat"));
         armazem = (Armazem) in.readObject();
     }
     
+    /**
+     *
+     * @return
+     */
     public Armazem getArmazem() {
         return armazem;
     }
@@ -68,7 +82,10 @@ public class GereAluguer {
         armazem.removeVeiculo(m);
     }
     
-    public void menu_Veiculos(){
+    /**
+     *
+     */
+    private void menu_Veiculos(){
         int op;
         do {
             System.out.println("> Veiculos ----------------<");
@@ -125,7 +142,10 @@ public class GereAluguer {
         }
     }
     
-    public void menu_Alugueres(){
+    /**
+     *
+     */
+    private void menu_Alugueres(){
         int op;
         do {
             System.out.println("> Alugueres ----------------<");
@@ -144,6 +164,9 @@ public class GereAluguer {
         }while (op!=0);
     }
     
+    /**
+     *
+     */
     public void menu_Principal(){
         int op;
         do {

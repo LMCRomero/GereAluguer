@@ -50,7 +50,7 @@ public class Veiculo implements Serializable {
      * Aluga o veículo estabelecendo a data de inicio do aluguer
      * @param dataOut Data de inicio do aluguer
      * @return true em caso de sucesso e false caso esteja alugado
-     * @throws VeiculoAlugadoException
+     * @throws VeiculoAlugadoException Quando o veiculo já está alugado e não disponível
      */
     public boolean aluga(int dataOut) throws VeiculoAlugadoException {
         boolean sucesso = false;
@@ -71,6 +71,8 @@ public class Veiculo implements Serializable {
      * @param dataIn Data da devolução
      * @return true em caso de sucesso e 
      *         false caso não esteja alugado ou data inválida
+     * @throws VeiculoNaoAlugadoException Quando o veiculo não está alugado
+     * @throws DataInvalidaException Quando a data de devolução não é válida
      */
     public boolean devolve(int dataIn) throws VeiculoNaoAlugadoException, DataInvalidaException {
         boolean sucesso = false;
