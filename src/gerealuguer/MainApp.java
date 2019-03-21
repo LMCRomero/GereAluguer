@@ -5,8 +5,6 @@
  */
 package gerealuguer;
 
-import java.io.*;
-
 /**
  *
  * @author LuisRomero
