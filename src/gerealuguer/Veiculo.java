@@ -119,10 +119,9 @@ public class Veiculo implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.matricula);
-        hash = 53 * hash + Float.floatToIntBits(this.custoDia);
-        hash = 53 * hash + (this.alugado ? 1 : 0);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.matricula);
+        hash = 79 * hash + Float.floatToIntBits(this.custoDia);
         return hash;
     }
 
@@ -138,7 +137,10 @@ public class Veiculo implements Serializable {
             return false;
         }
         final Veiculo other = (Veiculo) obj;
-        return this.matricula.equals(other.matricula);
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        return true;
     }
 
     private int calculaDias(int dataEntra, int dataSai) {

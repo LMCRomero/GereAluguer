@@ -1,0 +1,7 @@
+Veiculos --------------------------
+75-TR-78 - Estado:Livre Custo(15.7)
+56-KE-60 - Estado:Alugado(190322) Custo(25.7)
+78-TL-85 - Estado:Livre Custo(16.7)
+12-FG-34 - Estado:Livre Custo(23.5)
+87-TL-58 - Estado:Livre Custo(16.7)
+-----------------------------------

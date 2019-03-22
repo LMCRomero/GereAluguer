@@ -45,6 +45,7 @@ public class GereAluguer {
     private void gravarArmazem() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("armazem.dat"))) {
             out.writeObject(armazem);
+            out.close();
         } catch(IOException e){
             System.out.println("Erro ao gravar armazém!");            
         }
@@ -58,6 +59,7 @@ public class GereAluguer {
         ObjectInputStream in = 
                 new ObjectInputStream(new FileInputStream("armazem.dat"));
         armazem = (Armazem) in.readObject();
+        in.close();
     }
     
     /**
@@ -82,6 +84,21 @@ public class GereAluguer {
         armazem.removeVeiculo(m);
     }
     
+    private void listaTodosTexto(){
+        String s = "Veiculos.txt";
+        try{
+//            System.out.println("Nome ficheiro: "); s = Le.umaString();
+            File f = new File(s);
+            PrintWriter out = new PrintWriter(f);
+            armazem.listVeiculos(out);
+            out.flush();
+            out.close();
+        } catch(FileNotFoundException e){
+            System.out.println("O ficheiro \'" + s + "\' não existe!");
+        }
+
+    }
+    
     /**
      *
      */
@@ -91,8 +108,9 @@ public class GereAluguer {
             System.out.println("> Veiculos ----------------<");
             System.out.println("\t 1 - Inserir");
             System.out.println("\t 2 - Remover");
-            System.out.println("\t 3 - Listar todos");
+            System.out.println("\t 3 - Listar Todos");
             System.out.println("\t 4 - Listar Livres");
+            System.out.println("\t 5 - Listar Ficheiro");
             System.out.println("\t 0 - Sair");
             System.out.print("opção: "); op = Le.umInt();
             switch(op){
@@ -108,6 +126,9 @@ public class GereAluguer {
                 case 4: 
                     armazem.listVeiculosLivres();
                     break;
+                case 5: 
+                    listaTodosTexto();
+                    break;
             }            
         }while (op!=0);
     }
@@ -121,6 +142,8 @@ public class GereAluguer {
         try {
         armazem.alugaVeiculo(m, dOut);            
         } catch(VeiculoAlugadoException e){
+            System.out.println(e.getMessage());
+        } catch(MatriculaInexistenteException e){
             System.out.println(e.getMessage());
         }
     }
@@ -139,9 +162,23 @@ public class GereAluguer {
             System.out.println(e.getMessage());            
         } catch(DataInvalidaException e){
             System.out.println(e.getMessage());  
+        } catch(MatriculaInexistenteException e){
+            System.out.println(e.getMessage());
         }
     }
     
+    private void gravarAlugados(){
+        String s = "Alugados.txt";
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter(s));
+            armazem.listVeiculosAlugados(out);
+            out.flush();
+            out.close();
+        } catch(IOException e){
+            System.out.println("Erro ao escrever no ficheiro: " + s);
+        }
+        
+    }
     /**
      *
      */
@@ -151,6 +188,8 @@ public class GereAluguer {
             System.out.println("> Alugueres ----------------<");
             System.out.println("\t 1 - Alugar");
             System.out.println("\t 2 - Devolver");
+            System.out.println("\t 3 - Alugados");
+            System.out.println("\t 4 - Gravar");
             System.out.println("\t 0 - Sair");
             System.out.print("opção: "); op = Le.umInt();
             switch(op){
@@ -159,6 +198,12 @@ public class GereAluguer {
                     break;
                 case 2: 
                     devolveVeiculo();
+                    break;
+                case 3: 
+                    armazem.listVeiculosAlugados();
+                    break;
+                case 4: 
+                    gravarAlugados();
                     break;
             }            
         }while (op!=0);

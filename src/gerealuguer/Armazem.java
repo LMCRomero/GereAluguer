@@ -4,7 +4,7 @@
 package gerealuguer;
 
 import erros.*;
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -72,7 +72,7 @@ public class Armazem implements Serializable {
     public void novoVeiculo(Veiculo v){
         if(maxVeiculos>=veiculos.size()) {
             if(!veiculos.contains(v))
-                veiculos.add(v);
+                veiculos.add(v); 
             else 
                 throw new MatriculaExistenteException(v.getMatricula());
         }
@@ -151,6 +151,18 @@ public class Armazem implements Serializable {
     }
 
     /**
+     * Lista todos o veículos existentes no armazém
+     * @param out Stream de saída
+     */
+    public void listVeiculos(PrintWriter out){
+        out.println("Veiculos --------------------------");
+        for(Veiculo v:veiculos){
+            out.println(v); 
+        }
+        out.println("-----------------------------------");
+    }
+
+    /**
      * Lista todos os veículos livres (não alugados) no armazém
      */
     public void listVeiculosLivres(){
@@ -163,6 +175,19 @@ public class Armazem implements Serializable {
     }
 
     /**
+     * Lista todos os veículos livres (não alugados) no armazém
+     * @param out Stream de saída
+     */
+    public void listVeiculosLivres(PrintWriter out){
+        out.println("Veiculos Livres -------------------");
+        for(Veiculo v:veiculos){
+            if(!v.getAlugado())
+                out.println(v); 
+        }
+        out.println("-----------------------------------");
+    }
+
+    /**
      * Lista todos os veículos alugados do armazém
      */
     public void listVeiculosAlugados(){
@@ -172,5 +197,19 @@ public class Armazem implements Serializable {
                 System.out.println(v); 
         }
         System.out.println("-----------------------------------");
+    }
+
+    /**
+     * Lista todos os veículos alugados do armazém
+     * @param out Stream de saída
+     * @throws IOException Na escrita no ficheiro
+     */
+    public void listVeiculosAlugados(BufferedWriter out) throws IOException {
+        out.write("Veiculos Alugados -----------------\n");
+        for(Veiculo v:veiculos){
+            if(v.getAlugado())
+                out.write(v.toString() + "\n"); 
+        }
+        out.write("-----------------------------------\n");
     }
 }

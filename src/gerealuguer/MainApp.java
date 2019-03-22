@@ -5,6 +5,8 @@
  */
 package gerealuguer;
 
+import erros.*;
+
 /**
  *
  * @author LuisRomero
@@ -16,13 +18,18 @@ public class MainApp {
         String m;
         float c;
         float p;
-        
-        m = "12-FG-34"; c = 23.5F; armazem.novoVeiculo(new Veiculo(m,c));
-        m = "75-TR-78"; c = 15.7F; armazem.novoVeiculo(new Veiculo(m,c));
-        m = "56-KE-60"; c = 25.7F; armazem.novoVeiculo(new Veiculo(m,c));
-        m = "75-TR-78"; c = 15.7F; armazem.novoVeiculo(new Veiculo(m,c));
-        m = "78-TL-85"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));
-        m = "87-TL-58"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));
+        try{ m = "12-FG-34"; c = 23.5F; armazem.novoVeiculo(new Veiculo(m,c));
+         } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
+        try{ m = "75-TR-78"; c = 15.7F; armazem.novoVeiculo(new Veiculo(m,c));
+        } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
+        try{ m = "56-KE-60"; c = 25.7F; armazem.novoVeiculo(new Veiculo(m,c));
+        } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
+        try{ m = "75-TR-78"; c = 15.7F; armazem.novoVeiculo(new Veiculo(m,c));
+        } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
+        try{ m = "78-TL-85"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));
+        } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
+        try{ m = "87-TL-58"; c = 16.7F; armazem.novoVeiculo(new Veiculo(m,c));            
+        } catch(MatriculaExistenteException e){ System.out.println(e.getMessage()); }
     }
     
     /**
@@ -33,7 +40,7 @@ public class MainApp {
     public static void main(String[] args) {
         GereAluguer ga = new GereAluguer();
         
-        //iniciaEstado(ga);
+        iniciaEstado(ga);
         ga.menu_Principal();
     }
 }
