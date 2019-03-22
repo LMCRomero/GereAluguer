@@ -5,7 +5,6 @@ package gerealuguer;
 
 import erros.*;
 import java.io.*;
-import java.text.*;
 import java.util.*;
 
 /**
